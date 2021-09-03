@@ -9,7 +9,7 @@
 
   beforeUpdate(async () => {
     const newToDos = await serverClient.query(
-      Map(q.Paginate(q.Documents(q.Collection("toDos"))), q.Lambda(x => q.Get(x)))
+      q.Map(q.Paginate(q.Documents(q.Collection("toDos"))), q.Lambda(x => q.Get(x)))
     );
     toDos = newToDos.data;
   });
