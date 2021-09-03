@@ -1,14 +1,16 @@
 <script>
   import { writable, get } from "svelte/store";
-  import { serverClient } from "./index";
-  import { Create, Collection } from "faunadb";
+  var q = window.faunadb.query;
+  var serverClient = new faunadb.Client({
+    secret: "fnAESCbcTmACS_xZJEqITqgsxEcrVjPHqDVxkwk6",
+  });
 
   export let toDos;
   const value = writable({});
   async function handleClick() {
     const formData = get(value);
     const data = await serverClient.query(
-      Create(Collection("toDos"), {
+      q.Create(q.Collection("toDos"), {
         data: formData
       })
     );

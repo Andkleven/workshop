@@ -1,21 +1,15 @@
 <script>
   import AddToDo from "./AddToDo.svelte";
   import { beforeUpdate } from "svelte";
-  import { serverClient } from "./index";
-  import {
-    Client,
-    Map,
-    Paginate,
-    Documents,
-    Collection,
-    Get,
-    Lambda
-  } from "faunadb";
+  var q = window.faunadb.query;
+  var serverClient = new faunadb.Client({
+    secret: "fnAESCbcTmACS_xZJEqITqgsxEcrVjPHqDVxkwk6",
+  });
   let toDos = [];
 
   beforeUpdate(async () => {
     const newToDos = await serverClient.query(
-      Map(Paginate(Documents(Collection("toDos"))), Lambda(x => Get(x)))
+      Map(q.Paginate(q.Documents(q.Collection("toDos"))), q.Lambda(x => q.Get(x)))
     );
     toDos = newToDos.data;
   });
