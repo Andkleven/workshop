@@ -2,19 +2,19 @@
   import { writable, get } from "svelte/store";
   var q = window.faunadb.query;
   var serverClient = new faunadb.Client({
-    secret: "fnAESCbcTmACS_xZJEqITqgsxEcrVjPHqDVxkwk6",
+    secret: "fnAESOSOliACSRpFQnsUnCIPKHOpT-niV3y1OLZU",
   });
 
   export let toDos;
   const value = writable({});
   async function handleClick() {
     const formData = get(value);
-    const data = await serverClient.query(
-      q.Create(q.Collection("toDos"), {
-        data: formData
-      })
-    );
-    toDos.push(data);
+    // const data = await serverClient.query(
+    //   q.Create(q.Collection("toDos"), {
+    //     data: formData,
+    //   }),
+    // );
+    toDos.push({ data: formData, ref: { value: { id: Math.random() } } });
     toDos = toDos;
     value.set({});
   }
@@ -35,23 +35,23 @@
 </style>
 
 <div>
-	<h1>Gjøremål</h1>
+	<h1>  skal vi dra? Ja</h1>
   <div>
-  <label for="toDo">Gjøremål</label>
+    <label for="toDo">Gjøremål</label>
   </div>
   <div>
-	<input bind:value={$value.title}/>
+	  <input bind:value={$value.title}/>
   </div>
   <div>
-  <label for="details">Detaljer</label>
+    <label for="details">Detaljer</label>
   </div>
   <div>
-	<textarea  bind:value={$value.detail} />
+	  <textarea  bind:value={$value.detail} />
   </div>
   <div>
-	<button on:click|preventDefault={handleClick}>
-  Lagre
-  </button>
+	  <button on:click|preventDefault={handleClick}>
+      Lagre
+    </button>
   </div>
 
 </div>

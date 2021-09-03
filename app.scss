@@ -1,0 +1,19 @@
+@import "./general.scss";
+
+@mixin clean {
+  border: none;
+  background: none;
+}
+
+@mixin borders {
+  border: none;
+  border-radius: 6px;
+  background: rgb(250, 250, 250);
+}
+
+input,
+textarea {
+  @include clean;
+  @include borders;
+  padding: 0.667em;
+}
