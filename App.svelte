@@ -1,8 +1,7 @@
 <script>
-  import AddToDo from "./AddToDo";
+  import AddToDo from "./AddToDo.svelte";
   import { beforeUpdate } from "svelte";
   import { serverClient } from "./index";
-  let toDos = [];
   import {
     Client,
     Map,
@@ -12,6 +11,7 @@
     Get,
     Lambda
   } from "faunadb";
+  let toDos = [];
 
   beforeUpdate(async () => {
     const newToDos = await serverClient.query(
