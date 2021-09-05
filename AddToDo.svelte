@@ -34,8 +34,8 @@
   }
 </style>
 
-<div>
-	<h1>  skal vi dra? Ja</h1>
+
+	<h1> Gjøremål</h1>
   <div>
     <label for="toDo">Gjøremål</label>
   </div>
@@ -54,4 +54,3 @@
     </button>
   </div>
 
-</div>

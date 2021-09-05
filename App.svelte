@@ -28,9 +28,6 @@
   //     toDos = newToDos.data;
   //   }
   // });
-  $: {
-    console.log(toDos);
-  }
 </script>
 
 <style>
