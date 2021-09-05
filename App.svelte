@@ -1,6 +1,5 @@
-<script>
-  import "../app.scss";
-
+<script >
+  import "./app.scss";
   import AddToDo from "./AddToDo.svelte";
   import { onMount } from "svelte";
   var q = window.faunadb.query;
