@@ -31,14 +31,21 @@
 </script>
 
 <style>
-		main {
-		  font-family: sans-serif;
-		  text-align: center;
-		}
-		table {
-		  margin-left: auto;
-		  margin-right: auto;
-		}
+  main {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  button {
+    background: #ff3e00;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 2px;
+  }
 </style>
 
 <main>
