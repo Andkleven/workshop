@@ -1,4 +1,4 @@
-<script >
+<script>
   import "./app.scss";
   import AddToDo from "./AddToDo.svelte";
   import { onMount } from "svelte";
