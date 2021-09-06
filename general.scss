@@ -1,23 +1,23 @@
-$blue: global #35b3d0;
+$blue: #1cb9ce;
 $red: #fd585e;
-$green: #0acea0;
-$black: #454554;
+$green: #07d08d;
+$black: #222831;
 $sand: #ffd899;
 $white: #ecf0f3;
 
 html,
 body,
-// main,
-// #svelte,
-// main > div:first-child {
-//   height: 100%;
-// }
+main,
+#svelte {
+  height: 100%;
+}
 
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: $white;
+  background-color: $black;
+  color: $white;
   
   /* Firefox */
   scrollbar-width: thin;
@@ -59,12 +59,13 @@ a {
   text-decoration: none;
 }
 
-* :not(p, ul, li h1, h2, h3, h4, h5, h6) {
+* :not(p, ul, li, h1, h2, h3, h4, h5, h6) {
   margin: 0;
   padding: 0;
+  font-size: medium;
 }
 
-.not-selectable {
+.not-selectable, button {
   -webkit-user-drag: none;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -77,4 +78,3 @@ fieldset {
   padding: 0;
   margin: 0;
 }
-

@@ -3,17 +3,56 @@
 @mixin clean {
   border: none;
   background: none;
+  outline: none;
 }
 
-@mixin borders {
-  border: none;
-  border-radius: 6px;
-  background: rgb(250, 250, 250);
+@mixin rounded {
+  border-radius: 7px;
+}
+
+@mixin padded {
+  padding: 0.667em;
+}
+
+.padded {
+  @include padded;
+}
+
+@mixin combo {
+  @include clean;
+  @include rounded;
+  @include padded;
+}
+
+main {
+  display: grid;
+  place-items: center;
+  height: 100%;
 }
 
 input,
 textarea {
-  @include clean;
-  @include borders;
-  padding: 0.667em;
+  @include combo;
+  
+  box-sizing: border-box;
+  margin: 0;
+
+  background: rgb(250, 250, 250);
+  width: 100%;
+  max-width: 100%;
+}
+
+button {
+  @include combo;
+  font-weight: bold;
+  color: $white;
+  background-color: $red;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.075);  
+  }
+  &:active {
+    filter: brightness(0.925);  
+  }
 }

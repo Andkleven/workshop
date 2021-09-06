@@ -1,56 +1,36 @@
 <script>
-  import { writable, get } from "svelte/store";
-  var q = window.faunadb.query;
-  var serverClient = new faunadb.Client({
-    secret: "fnAESOSOliACSRpFQnsUnCIPKHOpT-niV3y1OLZU",
-  });
-
+  // var q = window.faunadb.query;
+  // var serverClient = new faunadb.Client({
+  //   secret: "fnAESOSOliACSRpFQnsUnCIPKHOpT-niV3y1OLZU",
+  // });
+  let value = "";
   export let toDos;
-  const value = writable({});
   async function handleClick() {
-    const formData = get(value);
     // const data = await serverClient.query(
     //   q.Create(q.Collection("toDos"), {
     //     data: formData,
     //   }),
     // );
-    toDos.push({ data: formData, ref: { value: { id: Math.random() } } });
+    toDos.push({ data: { title: value }, ref: { value: { id: Math.random() } } });
     toDos = toDos;
-    value.set({});
+    value = "";
   }
+
+  import "./app.scss";
 </script>
 
-<style>
+<form class="todo-wrapper" on:submit|preventDefault={handleClick}>
+  <div>
+    <input required placeholder="Gjøremål" bind:value={value}/>
+  </div>
+  <button type="submit" >
+    Legg til
+  </button>
+</form>
+
+<style lang="scss">
   button {
-    background: #ff3e00;
-    color: white;
-    border: none;
-    margin-bottom: 20px;
-    padding: 8px 12px;
-    border-radius: 2px;
-  }
-  input {
-    margin: 5px 0 20px 0;
+    margin-top: 5px;
+    width: 100%;
   }
 </style>
-
-
-	<h1> Gjøremål</h1>
-  <div>
-    <label for="toDo">Gjøremål</label>
-  </div>
-  <div>
-	  <input bind:value={$value.title}/>
-  </div>
-  <div>
-    <label for="details">Detaljer</label>
-  </div>
-  <div>
-	  <textarea  bind:value={$value.detail} />
-  </div>
-  <div>
-	  <button on:click|preventDefault={handleClick}>
-      Lagre
-    </button>
-  </div>
-

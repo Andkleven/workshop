@@ -2,10 +2,10 @@
   import "./app.scss";
   import AddToDo from "./AddToDo.svelte";
   import { onMount } from "svelte";
-  var q = window.faunadb.query;
-  var serverClient = new faunadb.Client({
-    secret: "fnAESOSOliACSRpFQnsUnCIPKHOpT-niV3y1OLZU",
-  });
+  // var q = window.faunadb.query;
+  // var serverClient = new faunadb.Client({
+  //   secret: "fnAESOSOliACSRpFQnsUnCIPKHOpT-niV3y1OLZU",
+  // });
   let toDos = [
     { data: { title: "test1", detail: "sdfasd" }, ref: { value: { id: "1" } } },
     { data: { title: "test2", detail: "sdfasd" } },
@@ -29,34 +29,79 @@
   // });
 </script>
 
+<main>
+  <div class="app-wrapper">
+    <AddToDo bind:toDos={toDos}/>
+    <div class="todo-list-wrapper">
+      <ul class="todo-list">
+        {#each toDos as toDo}
+          <li class="todo-line">
+            <div class="todo-label not-selectable">
+              <label>
+                <input type="checkbox" class="hidden-checkbox" />
+                <span class="visible-checkbox" />
+                {toDo?.data?.title}
+              </label>
+            </div>
+            
+            <div><button on:click={() => handelClick(toDo.ref)}>Slett</button></div>
+          </li>
+        {/each}
+      </ul>
+    </div>
+  </div>
+</main>
+
 <style>
-  main {
-    font-family: sans-serif;
-    text-align: center;
+  .todo-list-wrapper {
+    margin-top: 25px;
   }
-  table {
-    margin-left: auto;
-    margin-right: auto;
+  .todo-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
   }
-  button {
-    background: #ff3e00;
-    color: white;
-    border: none;
-    padding: 4px 8px;
-    border-radius: 2px;
+  .app-wrapper {
+    padding: 5px;
+    width: 100%;
+    max-width: 360px;
+    min-height: 67vh;
+  }
+  .todo-line {
+    padding: 5px;
+    margin-top: 7px;
+    border-radius: 7px;
+    box-shadow: 0 1px 0 2px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  label {
+    display: flex;
+  }
+  .visible-checkbox {
+    height: 1.2em;
+    width: 1.2em;
+    padding: 0.2em;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 7px;
+    margin-right: 9px;
+  }
+  .hidden-checkbox {
+    width: 0;
+  }
+  .hidden-checkbox:checked ~ .visible-checkbox {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .hidden-checkbox:checked ~ .visible-checkbox::before {
+    content: url("check.svg");
+  }
+  .todo-label {
+    padding-left: 0.7em;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 </style>
-
-<main>
-  <AddToDo bind:toDos={toDos}/>
-  <table >
-  {#each toDos as toDo}
-    <tr> 
-      <td>{toDo.data.title}</td>
-      <td>{toDo.data.detail}</td>
-      <td><input type="checkbox"/></td>
-      <td><button on:click={() => handelClick(toDo.ref)}>Delete</button></td>
-    </tr>
-  {/each} 
-  </table>
-</main>
