@@ -1,5 +1,7 @@
 ### For å komme i gang
 
+##### [Se video](https://www.youtube.com/watch?v=kFVYiAuYDr8)
+
 1. Lage en [sandbox](https://codesandbox.io/dashboard/home?workspace=a5daef3d-256a-4387-a598-b09354477e5a)
    ![picture 1](images/44742e30496afd97d9542258c5386f4ac9decc429ad8d72dbd31087d4020994c.png)
 
