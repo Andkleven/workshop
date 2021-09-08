@@ -1,6 +1,6 @@
 ### For å komme i gang
 
-##### [Se video](https://www.youtube.com/watch?v=kFVYiAuYDr8)
+##### [Se video](https://www.youtube.com/watch?v=kFVYiAuYDr8) for å komme i gang eller følg trinnene under
 ##### [Se video](https://www.youtube.com/watch?v=HIlXJpMn5n0) for å legge til Fauna(database), er ikke i tekst format 
 
 1. Lage en [sandbox](https://codesandbox.io/dashboard/home?workspace=a5daef3d-256a-4387-a598-b09354477e5a)
